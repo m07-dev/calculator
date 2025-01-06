@@ -9,9 +9,13 @@ document.querySelectorAll('.calc-btn').forEach(button => {
 });
 
 document.querySelector('.result').addEventListener('click', (e) => {
+  try{
   const result = eval(val.replace(/×/g, '*').replace(/÷/g, '/'));
   const rounded = Math.round(result * 1000000)/1000000;
   wrapper.innerHTML = `<span class="digit p-3">${rounded}</span>`;
+  }catch(error){
+     wrapper.innerHTML = `<span class="digit p-3">${"error"}</span>`
+  }
 });
 
 document.querySelector('.reset').addEventListener('click',(e)=>{
